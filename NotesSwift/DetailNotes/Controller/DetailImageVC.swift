@@ -35,5 +35,4 @@ class DetailImageVC: UIViewController {
         imageScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         imageScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
     }
-
 }
