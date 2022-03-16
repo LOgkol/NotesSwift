@@ -62,12 +62,10 @@ enum UserDefaultsKeys : String {
 
 extension UserDefaults{
 
-    //MARK: Save User Data
     func setCheckValue(value: Int){
         set(value, forKey: UserDefaultsKeys.checkValue.rawValue)
     }
 
-    //MARK: Retrieve User Data
     func getCheckValue() -> Int{
         return integer(forKey: UserDefaultsKeys.checkValue.rawValue)
     }

@@ -117,7 +117,7 @@ extension DetailNotesVC: UICollectionViewDataSource{
         collectionCell.imageCollectionViewCell.isUserInteractionEnabled = true
         
         collectionCell.tapped = { [weak self] in
-            self?.test(collectionView, didSelectItemAt: indexPath)
+            self?.tappedPhoroCV(collectionView, didSelectItemAt: indexPath)
         }
         
         return collectionCell
@@ -127,7 +127,7 @@ extension DetailNotesVC: UICollectionViewDataSource{
 //MARK: UICollectionViewDelegate
 // Я понимаю что для перехода есть didSelectItem, но по не известной мне причине он не вызывался и я не смог это пофиксить ( оказалось что довольно частая проблема ) и решил прикрутить небольшое свое решение
 extension DetailNotesVC: UICollectionViewDelegate {
-    func test(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tappedPhoroCV(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let wayImage = imageData[indexPath.row]
         let storyboard = UIStoryboard(name: "DetailNotesView", bundle: nil)
         let detailImageVC = storyboard.instantiateViewController(identifier: "detailImageVC") as? DetailImageVC

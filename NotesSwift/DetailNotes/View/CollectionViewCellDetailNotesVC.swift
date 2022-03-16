@@ -20,10 +20,10 @@ class CollectionViewCellDetailNotesVC: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        imageCollectionViewCell.layer.cornerRadius = 10
-        
         deleteImage?.layer.cornerRadius = 10
         deleteImage?.clipsToBounds = true
+        
+        CustomView.addViewRadius(views: [imageCollectionViewCell], radius: 10)
         
         imageCollectionViewCell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tappedImage)))
     }

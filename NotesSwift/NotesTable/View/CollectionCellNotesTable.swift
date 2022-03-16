@@ -13,7 +13,6 @@ class CollectionCellNotesTable: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         CustomView.addViewRadius(views: [imageCollectionViewCell], radius: 10)
     }
 }

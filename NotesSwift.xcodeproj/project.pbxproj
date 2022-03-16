@@ -70,14 +70,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		F862F81E27DD161D0045ED83 /* MenegerCoreData */ = {
-			isa = PBXGroup;
-			children = (
-				F862F81F27DD163B0045ED83 /* MаnagerCoreData.swift */,
-			);
-			path = MenegerCoreData;
-			sourceTree = "<group>";
-		};
 		F865AC2427D8E98800EE94C4 /* NotesTable */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,10 +145,7 @@
 		F8A8802A27D8BD4F00B402EA /* NotesSwift */ = {
 			isa = PBXGroup;
 			children = (
-				F8A8802B27D8BD4F00B402EA /* AppDelegate.swift */,
-				F8A8802D27D8BD4F00B402EA /* SceneDelegate.swift */,
-				F885E41627D966530038EBB3 /* CustomView.swift */,
-				F862F81E27DD161D0045ED83 /* MenegerCoreData */,
+				F8D940A427E1F4F3006DD1AE /* Global */,
 				F865AC2427D8E98800EE94C4 /* NotesTable */,
 				F865AC2B27D8EAEE00EE94C4 /* DetailNotes */,
 				F8A8803727D8BD5000B402EA /* Assets.xcassets */,
@@ -165,6 +154,41 @@
 				F8A8803427D8BD4F00B402EA /* NotesSwift.xcdatamodeld */,
 			);
 			path = NotesSwift;
+			sourceTree = "<group>";
+		};
+		F8D940A327E1F4E7006DD1AE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F8A8802B27D8BD4F00B402EA /* AppDelegate.swift */,
+				F8A8802D27D8BD4F00B402EA /* SceneDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F8D940A427E1F4F3006DD1AE /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				F8D940A627E1F5AD006DD1AE /* Model */,
+				F8D940A527E1F525006DD1AE /* ServiceLayer */,
+				F8D940A327E1F4E7006DD1AE /* Controller */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		F8D940A527E1F525006DD1AE /* ServiceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				F862F81F27DD163B0045ED83 /* MаnagerCoreData.swift */,
+			);
+			name = ServiceLayer;
+			sourceTree = "<group>";
+		};
+		F8D940A627E1F5AD006DD1AE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F885E41627D966530038EBB3 /* CustomView.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
