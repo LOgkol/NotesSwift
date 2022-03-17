@@ -29,6 +29,7 @@ class DetailNotesVC: UIViewController {
     
     @IBOutlet weak var shadowViewCV: UIView!
     
+    //MARK: ViewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -59,7 +60,6 @@ class DetailNotesVC: UIViewController {
     }
     
     //MARK: SettingVC
-    
     func settingIsHiddenCV() {
         if imageData.isEmpty {
             colletionView.isHidden = true

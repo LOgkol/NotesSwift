@@ -15,6 +15,7 @@ class MаnagerCoreData {
     
     private var notes: [Notes] = []
     
+    //MARK: Reading CoreData
     func readingNotesCoreData(completion: @escaping ([Notes]?) -> Void) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -29,43 +30,7 @@ class MаnagerCoreData {
         completion(notes)
     }
     
-    func deleteNoteTableVC(note: Notes, complition: @escaping([Notes]?) -> Void) {
-        
-        context.delete(note)
-        
-        do {
-            try context.save()
-            readingNotesCoreData { [] notes in
-                guard let notes = notes else { return }
-                complition(notes)
-            }
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    func oneStarNotes() {
-        let entity = NSEntityDescription.entity(forEntityName: "Notes", in: context)
-        let newNotes = NSManagedObject(entity: entity!, insertInto: context) as! Notes
-        
-        var imageData: [Data] = []
-        let image = UIImage(named: "imageApp")?.pngData()
-        imageData.append(image!)
-        
-        let date = Date()
-        newNotes.date = date
-        newNotes.tittelNotes = "Название заметки"
-        newNotes.descriptionNotes = "Это описание Вашей заметки\nА ниже может быть Ваша фотография, нажмите на ячейку таблицы чтобы перейти в редактор заметки\nТак же Вы можете нажать на фотографию, чтобы расмотреть ее немного детальнее\n\nЧтобы удалить заметку Вы должны вернуться на главный экран и смахнуть ее влево"
-        newNotes.imageNotes = imageData as NSObject?
-        
-        do {
-            try context.save()
-            print("good")
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
+    //MARK: Save CoreData
     func saveNotes(note: Notes?, date: Date, imageData: [Data], titleTF: UITextField, descriptionTV: UITextView) {
         if note == nil {
             if imageData.isEmpty == false || validateTextField(textField: titleTF) || validateTextView(textView: descriptionTV){
@@ -122,6 +87,8 @@ class MаnagerCoreData {
         }
     }
     
+    //MARK: Delete CoreData
+    //удаление заметки в редакторе
     func deleteNotes(note: Notes) {
         
         context.delete(note)
@@ -133,7 +100,48 @@ class MаnagerCoreData {
             print(error.localizedDescription)
         }
     }
-
+    
+    //MARK: Delete CoreData
+    //удаление заметки на главном экране
+    func deleteNoteTableVC(note: Notes, complition: @escaping([Notes]?) -> Void) {
+        
+        context.delete(note)
+        
+        do {
+            try context.save()
+            readingNotesCoreData { [] notes in
+                guard let notes = notes else { return }
+                complition(notes)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    //MARK: Необходимо для ТЗ:
+    //При первом запуску должна быть одна заметка
+    func oneStarNotes() {
+        let entity = NSEntityDescription.entity(forEntityName: "Notes", in: context)
+        let newNotes = NSManagedObject(entity: entity!, insertInto: context) as! Notes
+        
+        var imageData: [Data] = []
+        let image = UIImage(named: "imageApp")?.pngData()
+        imageData.append(image!)
+        
+        let date = Date()
+        newNotes.date = date
+        newNotes.tittelNotes = "Название заметки"
+        newNotes.descriptionNotes = "Это описание Вашей заметки\nА ниже может быть Ваша фотография, нажмите на ячейку таблицы чтобы перейти в редактор заметки\nТак же Вы можете нажать на фотографию, чтобы расмотреть ее немного детальнее\n\nЧтобы удалить заметку Вы должны вернуться на главный экран и смахнуть ее влево"
+        newNotes.imageNotes = imageData as NSObject?
+        
+        do {
+            try context.save()
+            print("good")
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     
     //проверка на пробелы и не заполненные поля
     func validateTextView(textView: UITextView) -> Bool {

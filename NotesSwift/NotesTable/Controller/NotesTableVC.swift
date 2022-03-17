@@ -71,6 +71,7 @@ extension NotesTableVC: UITableViewDataSource {
             guard let self = self, let notes = notes else { return }
             self.notes = notes
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
         }
     }
     
@@ -104,7 +105,7 @@ extension NotesTableVC: UITableViewDataSource {
         }
         
         cell.tappedPhoto = {
-            self.tappedPhoyo(tableView, didSelectRowAt: indexPath)
+            self.tappedPhoto(tableView, didSelectRowAt: indexPath)
         }
         
         cell.dateCell.text = CustomView.dateFormatter.string(from: notesWay.date!)
@@ -127,7 +128,7 @@ extension NotesTableVC: UITableViewDelegate {
         self.navigationController?.pushViewController(detailsNotes, animated: true)
     }
     
-    func tappedPhoyo(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+    func tappedPhoto(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         let storyboard = UIStoryboard(name: "DetailNotesView", bundle: nil)
         let detailsNotes = storyboard.instantiateViewController(withIdentifier: "detailNotesVC") as! DetailNotesVC
         detailsNotes.notes = notes[indexPath.row]
